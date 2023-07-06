@@ -5,7 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import startDB from './database/database.config';
 import routerUser from './routes/user.route';
-import routerAuth from './routes/auth.route';
+import routerAuth from './rountes/auth.route';
 
 const app = express();
 app.use(cors({
