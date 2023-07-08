@@ -35,10 +35,6 @@ const userSchema = new Schema<IUser>({
         required: true,
         minlength: 8,
     },
-        /*autentication: {
-        password: { type: String, required: true, select: false },
-        token: { type: String, required: true, select: false },
-    },*/
     createdAt: { type: Date, default: Date.now() },
     updatedAt: { type: Date, default: 0 },
     deletedAt: { type: Date, default: 0 }

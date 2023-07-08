@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { createUser } from "../controllers/user.controller";
 import { User } from "../models/user.model";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 //log into
 export const signIn = async (req: Request, res: Response) => {
@@ -14,23 +15,30 @@ export const signIn = async (req: Request, res: Response) => {
             });
         }
         const user = await User.findOne({ email });
-        if (!user) {
+        const passwordIsValid = user === null ? false : await bcrypt.compare(password, user.password);
+
+        if (!(user && passwordIsValid)) {
             return res.status(401).json({
                 message:
                     "Oh no! It seems that the combination of email and password you entered is incorrect. Please double-check your information and try again",
             });
         }
-        let passIsValid = bcrypt.compareSync(password, user.password);
-        if (!passIsValid) {
-            return res.status(401).json({
-                message:
-                    "Oh no! It seems that the combination of email and password you entered is incorrect. Please double-check your information and try again",
-            });
+
+        const userToken = {
+            id: user._id,
+            email: user.email
         }
+
+        const token = jwt.sign(userToken, process.env.JWT_SECRET);
+            
         return res.status(200).json({
             message: "Congratulations! Access granted. Welcome aboard",
-            user: user,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            token: token
         });
+
     } catch (error) {
         return res.status(500).json({
             message:
@@ -39,6 +47,8 @@ export const signIn = async (req: Request, res: Response) => {
         });
     }
 };
+
+
 //create account
 export const signUp = async (req: Request, res: Response) => {
     try {
