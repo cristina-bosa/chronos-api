@@ -1,0 +1,6 @@
+GET http://localhost:3000/api/user
+Content-Type: application/json
+
+{
+    "email": "test3@test.com",
+}

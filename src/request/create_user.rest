@@ -1,9 +1,9 @@
-POST http://localhost:3000/user
+POST http://localhost:3000/api/auth/signup
 Content-Type: application/json
 
 {
-    "name": "John",
-    "username": "Doe",
-    "email": "johndoe4444@example.com",
-    "password": "12345"
+    "name": "Joaahn",
+    "username": "Doqe",
+    "email": "johndygoeqweqe4444@example.com",
+    "password": "aaaaaaaaaaaaaaaaaaaaaa"
 }
