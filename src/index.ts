@@ -27,5 +27,5 @@ startDB();
 /* mongoose.connect(process.env.MONGO_URI);
 mongoose.connection.on('error', (error: Error) => console.log(error)); */
 
-app.use('/', routerUser);
-app.use('/auth', routerAuth);
+app.use('/api', routerUser);
+app.use('/api', routerAuth);
