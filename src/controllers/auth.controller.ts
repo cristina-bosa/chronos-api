@@ -40,7 +40,7 @@ export const signIn = async (req: Request, res: Response) => {
         });
 
     } catch (error) {
-        return res.status(500).json({
+        return res.status(500).json({  
             message:
                 "Oops! Something went wrong on our end. We're experiencing technical difficulties. Please try again later",
             error: error,
@@ -59,6 +59,8 @@ export const signUp = async (req: Request, res: Response) => {
                     "Oops! It looks like there are missing fields that need your attention. Please fill them all in to proceed",
             });
         }
+        //const user = await User.create({ name, username, email, password })
+        //return res.status(201).json({ message: "User created", user: user })
         await createUser(req, res);
     } catch (error) {
         return res.status(500).json({

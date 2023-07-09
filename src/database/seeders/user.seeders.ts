@@ -1,6 +1,8 @@
-import mongoose from "mongoose";
 import { User } from "../../models/user.model";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
+import bcryptjs from "bcryptjs";
+
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URI);
@@ -14,13 +16,12 @@ const createRandomPassword = (length: number) => {
     return password;
 }
 
-
 const userData = [
     {
         name: "Paco", 
         username: "Santana", 
         email: "pacosantana@example.com",
-        password: createRandomPassword(8),
+        password: bcryptjs.hashSync(createRandomPassword(8), 9),
         createdAt: Date.now(),
         updatedAt: '',
         deletedAt: ''
@@ -29,7 +30,7 @@ const userData = [
         name: "Juan",
         username: "Perez",
         email: "juanperez@example.com",
-        password: createRandomPassword(6),
+        password: createRandomPassword(8),
         createdAt: Date.now(),
         updatedAt: '',
         deletedAt: ''
@@ -38,7 +39,7 @@ const userData = [
         name: "Maria",
         username: "Lopez",
         email: "marialopez@example.com",
-        password: createRandomPassword(4),
+        password: createRandomPassword(8),
         createdAt: Date.now(),
         updatedAt: '',
         deletedAt: ''
@@ -48,7 +49,7 @@ const userData = [
         name: "Pedro",
         username: "Garcia",
         email: "pedrogarcia@example.com",
-        password: createRandomPassword(10),
+        password: createRandomPassword(8),
         createdAt: Date.now(),
         updatedAt: '',
         deletedAt: ''

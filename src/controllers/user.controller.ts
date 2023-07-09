@@ -4,7 +4,8 @@ import bcryptjs from 'bcryptjs';
 
 export const getUser = async (req: Request, res: Response) => {
     try {
-        const user = await User.findOne({ _id: req.params.id })
+        const { email } = req.body
+        const user = await User.findOne({ email })
         if (!user) {
             return res.status(404).json({ message: "User not found" })
         }
@@ -13,7 +14,18 @@ export const getUser = async (req: Request, res: Response) => {
         return res.status(500).json({ message: 'Error', error: error })
     }
 }
+export const getUsers = async (req: Request, res: Response) => {
+    try {
+        const user = await User.find();
+        if(!user){
+            return res.status(404).json({ message: "Users not found" })
+        }
+        return res.status(200).json({ message: "🎈 Users found successfully", user: user })
+    } catch (error) { 
+        return res.status(500).json({ message: 'Error', error: error })
+    }
 
+}
 export const createUser = async (req: Request, res: Response) => {
     try {
         let { name, username, email, password} = req.body
