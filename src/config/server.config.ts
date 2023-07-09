@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import connectDB from './database.config';
 import dotenv from 'dotenv';
 
-//import routers
+//*import routers
 import userRouters from '../routes/user.route';
 import authRouters from '../routes/auth.route';
 
@@ -14,9 +14,8 @@ connectDB();
 
 app.use(express.json());
 
-/** ROUTERS **/
-app.use('/api', userRouters);
+//* Routers
+app.use('/api/user', userRouters);
 app.use('/api/auth', authRouters);
 
-
-export default app;
+export default app

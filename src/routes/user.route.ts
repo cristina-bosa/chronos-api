@@ -1,9 +1,13 @@
+import { createUser, getUser, getUsers, updatePassword, deleteUser  } from '../controllers/user.controller';
 import express from 'express';
-import { getUser, createUser } from '../controllers/user.controller';
 
 const routerUser = express.Router();
 
-routerUser.get('/user', getUser)
-routerUser.post('/user', createUser)
+routerUser.post('/', createUser) // * Create user
+routerUser.get('/', getUsers) // * Get all users
+routerUser.get('/', getUser) // * Get user by email
+routerUser.put('/', updatePassword)  // * Update password
+routerUser.delete('/', deleteUser) // * Delete user
+
 
 export default routerUser;

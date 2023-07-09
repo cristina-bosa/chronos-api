@@ -1,11 +1,12 @@
+import connectDB from "config/database.config";
 import { User } from "../models/user.model";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import bcryptjs from "bcryptjs";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URI);
+connectDB();
 
 const createRandomPassword = (length: number) => {
     const characets = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -18,8 +19,8 @@ const createRandomPassword = (length: number) => {
 
 const userData = [
     {
-        name: "Paco", 
-        username: "Santana", 
+        name: "Paco",
+        username: "Santana",
         email: "pacosantana@example.com",
         password: bcryptjs.hashSync(createRandomPassword(8), 9),
         createdAt: Date.now(),
