@@ -2,11 +2,10 @@
   "name": "apichronos",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
     "start": "nodemon",
-    "dummy-user": "ts-node src/database/seeders/user.seeders",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dummy-user": "ts-node src/utils/user.seeders"
   },
   "author": "",
   "license": "ISC",

@@ -1,4 +1,4 @@
-import { User } from "../../models/user.model";
+import { User } from "../models/user.model";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bcryptjs from "bcryptjs";
