@@ -1,10 +1,7 @@
-import connectDB from "config/database.config";
+import connectDB from "../config/database.config";
 import { User } from "../models/user.model";
 import mongoose from "mongoose";
 import bcryptjs from "bcryptjs";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 connectDB();
 
@@ -63,14 +60,12 @@ async function seedUsers() {
         await User.deleteMany()
         console.log(`❌ Users deleted successfully`)
         console.timeEnd('deleted')
-
-
+        
         console.time('created')
         await User.insertMany(userData)
         console.log(`👌 Users created successfully`)
         console.timeEnd('created')
 
-        mongoose.connection.close()
     } catch (error) {
         console.log(error)
     }
