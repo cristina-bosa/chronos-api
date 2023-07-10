@@ -5,6 +5,7 @@ interface ITimeControl extends mongoose.Document {
     endDate: Date;
     user: Schema.Types.ObjectId;
 }
+
 const timeControlSchema = new Schema<ITimeControl>({
     startDate: Date,
     endDate: Date,
@@ -15,4 +16,4 @@ const timeControlSchema = new Schema<ITimeControl>({
     }
 });
 
-export const timeControl = mongoose.model<ITimeControl>("timeControl", timeControlSchema);
+export const TimeControl = mongoose.model("TimeControl", timeControlSchema);
